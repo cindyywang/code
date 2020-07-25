@@ -1,0 +1,37 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/restaurant/detail/detail",
+    "pages/restaurant/index/index",
+    "pages/profile/FAQ/FAQ",
+    "pages/profile/index/index",
+    "pages/profile/setting/setting"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "sdkPlugin": {
+      "version": "3.3.0",
+      "provider": "wxc6b86e382a1e3294"
+    }
+  },
+  "tabBar":{
+    "list": [
+    {
+      "pagePath": "pages/index/index",
+      "text": "Home"
+    },
+    {
+      "pagePath": "pages/profile/index/index",
+      "text": "Me"
+    }
+  ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

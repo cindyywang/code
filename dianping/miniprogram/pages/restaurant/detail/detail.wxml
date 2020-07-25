@@ -1,0 +1,7 @@
+<!--miniprogram/pages/restaurant/detail/detail.wxml-->
+<view>{{restaurant.name}}</view>
+<view wx:for="{{comments}}" wx:for-item="comment" class="card-product">
+  <view class="card-product-infos">
+    <view class="h2">{{comment.comment}}</view>
+  </view>
+</view>

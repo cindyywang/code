@@ -1,0 +1,7 @@
+<!--miniprogram/pages/restaurant/index/index.wxml-->
+<view wx:for="{{restaurants}}" wx:for-item="restaurant" class="card-product">
+  <view class="card-product-infos">
+    <view class="h2">{{restaurant.name}}</view>
+    <view data-id="{{restaurant.id}}" bindtap="showRestaurant"> Restaurant {{restaurant.id}}</view>
+  </view>
+</view>
