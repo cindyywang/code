@@ -5,23 +5,29 @@ Page({
    * Page initial data
    */
   data: {
-    currentUser: null
+    currentUser: null,
+    currentPoints: 0
   },
 
   /**
    * Lifecycle function--Called when page load
    */
-  onLoad: function (options) {
+  onLoad: function () {
     const app = getApp()
 
     console.log('userData', app.globalData.userInfo)
+    this.setData({
+      currentUser: app.globalData.userInfo,
+    })
+
   },
   userInfoHandler(data) {
     const app = getApp()
-    wx.Baas.auth.loginWithWechat(data).then(user => {
+    wx.BaaS.auth.loginWithWechat(data).then(user => {
+      console.log('from userInfoHandler callback')
       console.log('user', user)
       app.globalData.userInfo = user
-      this.setDate({
+      this.setData({
         currentUser: user
       })
     }, err => {
@@ -40,6 +46,7 @@ Page({
    * Lifecycle function--Called when page show
    */
   onShow: function () {
+    // move 
 
   },
 

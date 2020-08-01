@@ -9,12 +9,14 @@ App({
      wx.requestPayment)
 
     wx.BaaS.init('cee12fe132caffd96d58')
-    wx.BaaS.auth.loginWithWechat() // 静默登录
 
-    wx.BaaS.auth.loginWithWechat().then(user => {
+    wx.BaaS.auth.getCurrentUser().then(user => {
       // 登录成功
       // this app which is the page
-      this.globalData.userInfo = user
+      // toJSON is a API to convert the super user to JSON object type which is normally used
+      // no need to use get method to geth the points
+      this.globalData.userInfo = user.toJSON();
+      wx.setStorageSync('userInfo', user.toJSON())
       console.log('logged in from app.js', user)
     }, err => {
       // 登录失败
@@ -24,6 +26,6 @@ App({
   },
   globalData: {
     // to compare the status in the backend whetrher someone loged in
-    userInfo: null
+    userInfo: wx.getStorageSync('userInfo') || null,
   }
 })

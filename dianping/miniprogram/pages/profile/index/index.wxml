@@ -1,3 +1,11 @@
 <!--miniprogram/pages/profile/index/index.wxml-->
 <text>Profile</text>
-<button type="primary" open-type="getUserInfo" bingeruserinfo="userInfoHandler">用户授权</button>
+<view wx:if="{{currentUser}}">
+  <view class="name">Name: {{currentUser.nickname}}</view>
+<image style="width: 200px; height: 200px;" src="{{currentUser.avatar}}"></image>
+<view class="points">Points: {{currentUser.points}}</view>
+</view>
+<view wx:if="{{!currentUser}}">
+  <button type="primary" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">用户授权</button>
+</view>
+

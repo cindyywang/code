@@ -1,7 +1,44 @@
-<!--miniprogram/pages/restaurant/detail/detail.wxml-->
+<!-- miniprogram/pages/restaurant/detail/detail.wxml
 <view>{{restaurant.name}}</view>
 <view wx:for="{{comments}}" wx:for-item="comment" class="card-product">
   <view class="card-product-infos">
     <view class="h2">{{comment.comment}}</view>
   </view>
+</view> -->
+
+<view class="comments">
+    <view class="title">Reviews</view>
+    <view wx:for="{{comments}}" class="comment-items" wx:for-item="comment" wx:key="id">
+        <view class="content">{{comment.comment}} - {{comment.rating}}</view>
+    </view>
+    <form bindsubmit="createReview" wx:if="{{currentUser}}">
+        <view class="review-input" style="width: 100%; margin-top: 20rpx;">
+            <input style="padding: 15rpx;" name="comment" placeholder="Enter your comment..." />
+            <picker style="padding: 15rpx;" mode="selector" range="{{ratings}}" onchange="onRate">
+                Restaurant Rating: {{rating}}
+            </picker>
+        </view>
+        <view class="submit-button">
+            <button type="primary" formType="submit">Add Comment</button>
+        </view>
+    </form>
+    <view wx:else>
+        <button type="primary" open-type="getUserInfo" bindgetuserinfo="userInfoHandler">Login to Comment</button>
+    </view>
 </view>
+
+
+<view class="meals">
+  <view class="meal" wx:for="{{meals}}" wx:for-item="meal">
+    <view class="left">
+      <view class="name">{{meal.name}}</view>
+      <view class="desc">{{meal.description}}</view>
+    </view>
+    <view class="right">
+      <view class="price">{{ meal.price > 0 ? meal.price : -meal.points }} {{ meal.price > 0 ? "Kuai" : "Points" }} </view>
+      <button size="mini" data-id="{{meal.id}}" type="primary" bindtap="createOrder">Order</button>
+    </view>
+  </view>
+</view>
+
+
